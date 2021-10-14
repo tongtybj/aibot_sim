@@ -1,0 +1,54 @@
+<?xml version='1.0'?>
+
+<robot name="aibot_mini_gazebo" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find aibot_description)/urdf/chassis/a1/chassis.urdf.xacro" />
+  
+  <gazebo reference="base_footprint">
+    <material>Gazebo/Red</material>
+  </gazebo>
+
+  <gazebo reference="front_left_wheel">
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <gazebo reference="front_right_wheel">
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <gazebo reference="rear_left_wheel">
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <gazebo reference="rear_right_wheel">
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <gazebo reference="camera">
+    <material>Gazebo/White</material>
+  </gazebo>
+
+  <gazebo reference="laser">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+
+  <!-- <simple_transmission name = "front_left_wheel"            reduction = "1.0"/>
+  <simple_transmission name = "front_right_wheel"           reduction = "1.0"/>
+  <simple_transmission name = "rear_left_wheel"             reduction = "1.0"/>
+  <simple_transmission name = "rear_right_wheel"            reduction = "1.0"/> -->
+
+  <gazebo>
+    <plugin name="mecanum_controller" filename="libgazebo_ros_planar_move.so">
+    <commandTopic>/cmd_vel</commandTopic>
+    <odometryTopic>/odom</odometryTopic>
+    <odometryFrame>odom</odometryFrame>
+    <leftFrontJoint>front_left_wheel_hinge</leftFrontJoint>
+    <rightFrontJoint>front_right_wheel_hinge</rightFrontJoint>
+    <leftRearJoint>rear_left_wheel_hinge</leftRearJoint>
+    <rightRearJoint>rear_right_wheel_hinge</rightRearJoint>
+    <odometryRate>20.0</odometryRate>
+    <robotBaseFrame>base_link</robotBaseFrame>
+    </plugin>
+  </gazebo>
+
+</robot>
