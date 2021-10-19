@@ -39,8 +39,8 @@
 
   <gazebo>
     <plugin name="mecanum_controller" filename="libgazebo_ros_planar_move.so">
-    <commandTopic>/cmd_vel</commandTopic>
-    <odometryTopic>/odom</odometryTopic>
+    <commandTopic>cmd_vel</commandTopic>
+    <odometryTopic>odom</odometryTopic>
     <odometryFrame>odom</odometryFrame>
     <leftFrontJoint>front_left_wheel_hinge</leftFrontJoint>
     <rightFrontJoint>front_right_wheel_hinge</rightFrontJoint>
@@ -52,7 +52,7 @@
   </gazebo>
 
   <gazebo reference="laser">
-    <sensor type="gpu_ray" name="head_hokuyo_sensor">
+    <sensor type="ray" name="head_hokuyo_sensor">
       <pose>0 0 0 0 0 0</pose>
       <visualize>false</visualize>
       <update_rate>40</update_rate>
@@ -61,8 +61,8 @@
           <horizontal>
             <samples>720</samples>
             <resolution>1</resolution>
-            <min_angle>-1.570796</min_angle>
-            <max_angle>1.570796</max_angle>
+            <min_angle>-3.1415926</min_angle>
+            <max_angle>3.1415926</max_angle>
           </horizontal>
         </scan>
         <range>
@@ -80,7 +80,7 @@
           <stddev>0.01</stddev>
         </noise>
       </ray>
-      <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_gpu_laser.so">
+      <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
         <topicName>scan</topicName>
         <frameName>laser</frameName>
       </plugin>

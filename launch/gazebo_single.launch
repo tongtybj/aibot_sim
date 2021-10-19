@@ -1,0 +1,10 @@
+<launch>
+
+    <arg name="robot_name" default = "robot0" />
+    
+    <!--3.在 Gazebo 中添加机器人模型 -->
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_model" args="-urdf -model $(arg robot_name) -param /robot_description" respawn="false" output="screen" />
+
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" />
+    
+</launch>
